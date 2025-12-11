@@ -8,10 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import java.util.List;
 
-/**
- * Adapter personalizado para exibir objetos Weather em uma ListView.
- * Implementa o padrão ViewHolder para otimização, conforme o Capítulo 7.
- */
+//Adapter personalizado para exibir objetos Weather em uma ListView.
+ //Implementa o padrão ViewHolder para otimização, conforme o Capítulo 7.
+
 public class WeatherArrayAdapter extends ArrayAdapter<Weather> {
 
     // Classe interna para armazenar referências aos Views (ViewHolder Pattern)
