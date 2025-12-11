@@ -11,10 +11,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe responsável por realizar a requisição HTTP e processar o JSON.
- * Em uma aplicação Android real, esta lógica estaria dentro de um AsyncTask
- * ou Thread separada para não bloquear a UI.
+/*
+  classe responsável por realizar a requisição HTTP e processar o JSON.(API)
+  Em uma aplicação Android real, esta lógica estaria dentro de um asynctask
+  ou rhread separada para não bloquear a UI.
  */
 public class WeatherAPITask {
 
@@ -22,9 +22,7 @@ public class WeatherAPITask {
     private static final String BASE_URL = "http://agent-weathermap-env-env.eba-6pzgqekp.us-east-2.elasticbeanstalk.com/api/weather";
     private static final String APP_ID = "AgentWeather2024_a8f3b9c1d7e2f5g6h4i9j0k1l2m3n4o5p6";
 
-    /**
-     * Monta a URL de requisição com os parâmetros obrigatórios.
-     */
+    //monta a URL de requisição com os parâmetros obrigatórios.
     public static String createURL(String city, int days ) {
         // A URL real deve ter a cidade codificada (URL-encoded)
         // Para simplicidade e aderência ao básico, usamos String.format
@@ -32,9 +30,7 @@ public class WeatherAPITask {
                 BASE_URL, city, days, APP_ID);
     }
 
-    /**
-     * Realiza a requisição HTTP e retorna a lista de previsões.
-     */
+    // Realiza a requisição HTTP e retorna a lista de previsões. tratamento de erros com try catch
     public static List<Weather> getForecast(String city, int days) {
         String urlString = createURL(city, days);
         HttpURLConnection connection = null;
@@ -47,13 +43,13 @@ public class WeatherAPITask {
             connection.setRequestMethod("GET");
             connection.connect();
 
-            // 5. Tratamento de erros (requisição)
+            //tratamento de erros (requisição)
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 Log.e(TAG, "Erro HTTP: " + connection.getResponseCode() + " - " + connection.getResponseMessage());
                 return null;
             }
 
-            // Lê a resposta
+            // lê a resposta
             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder buffer = new StringBuilder();
             String line;
@@ -62,15 +58,15 @@ public class WeatherAPITask {
             }
             jsonString = buffer.toString();
 
-            // 6. Processamento de JSON no modelo retornado
+            // processamento de JSON no modelo retornado
             return convertJSONtoArrayList(jsonString);
 
         } catch (JSONException e) {
-            // 5. Tratamento de erros (parsing JSON)
+            //tratamento de erros (parsing JSON)
             Log.e(TAG, "Erro ao processar JSON: " + e.getMessage());
             return null;
         } catch (Exception e) {
-            // 5. Tratamento de erros (rede/geral)
+            //tratamento de erros (rede/geral)
             Log.e(TAG, "Erro na requisição de rede: " + e.getMessage());
             return null;
         } finally {
@@ -87,9 +83,7 @@ public class WeatherAPITask {
         }
     }
 
-    /**
-     * Converte a String JSON em uma lista de objetos Weather.
-     */
+    // Converte a String JSON em uma lista de objetos Weather.
     private static List<Weather> convertJSONtoArrayList(String forecastJsonString) throws JSONException {
         List<Weather> forecastList = new ArrayList<>();
         JSONObject forecastJson = new JSONObject(forecastJsonString);
@@ -105,6 +99,7 @@ public class WeatherAPITask {
             double minTempC = day.getDouble("minTempC");
             double maxTempC = day.getDouble("maxTempC");
             String description = day.getString("description");
+            
             // A umidade é um valor entre 0 e 1 (ex: 0.75), conforme a estrutura da resposta
             double humidity = day.getDouble("humidity");
             String icon = day.getString("icon"); // O emoji
@@ -112,7 +107,6 @@ public class WeatherAPITask {
             Weather weather = new Weather(date, minTempC, maxTempC, description, humidity, icon);
             forecastList.add(weather);
         }
-
         return forecastList;
     }
 }
