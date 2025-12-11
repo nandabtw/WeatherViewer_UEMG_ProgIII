@@ -11,16 +11,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Atividade principal da aplicação.
- * Responsável por iniciar a consulta e exibir os resultados na ListView.
- */
+// Atividade principal da aplicação.
+ //Responsável por iniciar a consulta e exibir os resultados na ListView.
+
 public class MainActivity extends Activity {
 
     private static final String TAG = "WeatherApp";
     private static final int DAYS = 7; // Valor fixo conforme requisito
 
-    // Variáveis de instância
+    //Variáveis de instância
     private ListView weatherListView;
     private WeatherArrayAdapter weatherArrayAdapter;
     private TextInputEditText cityEditText;
@@ -31,17 +30,17 @@ public class MainActivity extends Activity {
         // Define o layout principal (activity_main.xml)
         setContentView(R.layout.activity_main);
 
-        // 1. Entrada da cidade
+        //Entrada da cidade
         cityEditText = findViewById(R.id.cityEditText);
 
-        // 7. Exibição da lista (ListView)
+        //Exibição da lista (ListView)
         weatherListView = findViewById(R.id.weatherListView);
 
         // Inicializa o Adapter com uma lista vazia
         weatherArrayAdapter = new WeatherArrayAdapter(this, new ArrayList<Weather>());
         weatherListView.setAdapter(weatherArrayAdapter);
 
-        // 3. Botão de consulta (FloatingActionButton)
+        //Botão de consulta (FloatingActionButton)
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +54,8 @@ public class MainActivity extends Activity {
         loadForecast();
     }
 
-    /**
-     * Inicia a tarefa de rede em uma Thread separada.
-     * Simula o comportamento de um AsyncTask.
-     */
+    //Inicia a tarefa de rede em uma Thread separada.
+     // Simula o comportamento de um AsyncTask.
     private void loadForecast() {
         final String city = cityEditText.getText().toString();
 
@@ -87,9 +84,7 @@ public class MainActivity extends Activity {
         }).start();
     }
 
-    /**
-     * Atualiza a ListView com os dados da previsão.
-     */
+    // Atualiza a ListView com os dados da previsão.
     private void updateUI(List<Weather> forecast) {
         if (forecast != null && !forecast.isEmpty()) {
             // Limpa o adapter e adiciona os novos dados

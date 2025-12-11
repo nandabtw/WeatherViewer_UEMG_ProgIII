@@ -99,7 +99,7 @@ public class WeatherAPITask {
             double minTempC = day.getDouble("minTempC");
             double maxTempC = day.getDouble("maxTempC");
             String description = day.getString("description");
-            
+
             // A umidade é um valor entre 0 e 1 (ex: 0.75), conforme a estrutura da resposta
             double humidity = day.getDouble("humidity");
             String icon = day.getString("icon"); // O emoji
