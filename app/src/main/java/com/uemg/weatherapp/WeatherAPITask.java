@@ -19,7 +19,7 @@ import java.util.List;
 public class WeatherAPITask {
 
     private static final String TAG = "WeatherAPITask";
-    private static final String BASE_URL = "http://agent-weathermap-env-env.eba-6pzgqekp.us-east-2.elasticbeanstalk.com/api/weather";
+    private static final String BASE_URL = "https://agent-weathermap-env-env.eba-6pzgqekp.us-east-2.elasticbeanstalk.com/api/weather";
     private static final String APP_ID = "AgentWeather2024_a8f3b9c1d7e2f5g6h4i9j0k1l2m3n4o5p6";
 
     //monta a URL de requisição com os parâmetros obrigatórios.
