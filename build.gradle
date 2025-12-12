@@ -1,0 +1,6 @@
+// build.gradle (DA RAIZ DO PROJETO)
+plugins {
+    // Essa linha diz ao Gradle para buscar o plugin Android App no Google's Maven
+    id 'com.android.application' version '8.2.1' apply false
+    id 'com.android.library' version '8.2.1' apply false
+}

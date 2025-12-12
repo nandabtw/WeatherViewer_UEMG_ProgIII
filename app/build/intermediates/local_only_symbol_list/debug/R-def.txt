@@ -1,0 +1,8 @@
+R_DEF: Internal format may change without notice
+local
+id dateTextView
+id descriptionTextView
+id humidityTextView
+id iconTextView
+id tempTextView
+layout list_item
