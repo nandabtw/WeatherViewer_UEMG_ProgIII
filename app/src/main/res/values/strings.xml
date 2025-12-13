@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherViewer UEMG</string>
+    <string name="hint_city">Digite a cidade, estado, país (ex: Passos,MG,BR)</string>
+    <string name="button_consultar">Consultar</string>
+</resources>

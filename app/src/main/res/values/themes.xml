@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WeatherApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar" />
+    <style name="Theme.WeatherViewer_UEMG_ProgIII" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    </style>
+</resources>
